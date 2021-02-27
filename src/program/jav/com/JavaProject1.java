@@ -25,7 +25,14 @@ public class JavaProject1 {
 			System.out.println(" 3. Exit");
 
 			System.out.println("Enter Your Choice:");
-			num = input.nextInt();
+			if (input.hasNextInt())
+				num = input.nextInt();
+	        else {
+	            input.next();
+	            System.out.println("Oops!!! wrong value, please provide right values");
+	            continue;
+	        }
+			
 			String currentDir = System.getProperty("user.dir");
 
 			switch (num) {
@@ -80,7 +87,7 @@ public class JavaProject1 {
 				deleteFile(currentDir, filenametoBedeleted);
 				break;
 			case "c":
-				System.out.println("enter file name to delete");
+				System.out.println("enter file name to search");
 				String filenametoBeSearched = input.next();
 				System.out.println(exists(new File(currentDir), filenametoBeSearched) ? "File found successfully" : "File not found");
 				break;
